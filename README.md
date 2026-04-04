@@ -21,11 +21,21 @@ Managing a global pandemic requires both rapid clinical tools and accurate predi
 
 ## Model Architecture
 ### Module 1: Vision (EfficientNet-B4)
-* Preprocessing: CLAHE normalization and data augmentation.
-* Strategy: Two-stage transfer learning (frozen backbone for 5 epochs before full fine-tuning).
-* Verification: Grad-CAM integration for radiological marker verification.
+* **Preprocessing:** CLAHE normalization and data augmentation.
+* **Strategy:** Two-stage transfer learning (frozen backbone for 5 epochs before full fine-tuning).
+* **Verification:** Grad-CAM integration for radiological marker verification.
 
 ### Module 2: Forecasting (Transformer-LSTM Hybrid)
 * **Architecture:** A fused model where the Transformer encoder processes global trends and the LSTM captures daily fluctuations.
 * **Output:** Generates 7, 14, and 30-day multi-horizon probabilistic forecasts.
 * **Optimization:** Automated hyperparameter tuning via Optuna.
+
+## Performance & Results
+### Current Milestones
+* **Vision Baseline:** Achieved 99.08% accuracy in distinguishing COVID-19 from Viral Pneumonia.
+* **Forecasting Baseline:** A standalone LSTM achieved a 7-day MAPE of ~11%.
+* **Impact of Features:** Adding the Government Stringency Index reduced forecasting error by 2.3 percentage points.
+
+### Success Targets 
+* **Vision:** Target $\ge 93\%$ accuracy and $\ge 95\%$ recall.
+* **Forecasting:** Target $\text{MAPE} < 7\%$ for 7-day horizons.
